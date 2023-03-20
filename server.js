@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const port = 6958;
-app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + '/public/'));
 app.use(bodyParser.json());
 
 const coords = require('./challs.json');

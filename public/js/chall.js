@@ -6,6 +6,8 @@ var map;
 var markers = [];
 var guess_coordinates = [];
 var check_count = 0;
+var default_pano_width = 32;
+var default_pano_height = 16;
 var comp_loc = {lat: 19.300819751590797, lng: -81.18481045869258}; // TODO - get comp location from backend
 
 function str2ab(str) {
@@ -19,7 +21,9 @@ function str2ab(str) {
 
 async function initialize() {
     check_count = 0;
-   
+  
+    // TODO - GET /img/chall*/info.json
+
     document.getElementById('hud').innerHTML = "<h2>Where it be?</h2>";
 
     // Map and Map options
@@ -66,8 +70,8 @@ async function initialize() {
     var pano = document.getElementById('pano');
     const link = document.location.href.split("/");
     const chall = link[link.length - 2];
-    const panorama = new google.maps.StreetViewPanorama(pano, { pano: chall, visible: true });
-    panorama.registerPanoProvider(getCustomPanorama);
+    const panorama = new google.maps.StreetViewPanorama(pano, { pano: chall, test: 1, visible: true });
+    panorama.registerPanoProvider(getCustomPanorama, {cors: true});
     
 }
 
@@ -89,7 +93,7 @@ function getCustomPanorama(pano) {
     return {
 	tiles: {
 	    tileSize: new google.maps.Size(512, 512),
-	    worldSize: new google.maps.Size(512*16, 512*8),
+	    worldSize: new google.maps.Size(512*default_pano_width, 512*default_pano_height),
 	    centerHeading: 105,
 	    getTileUrl: getCustomPanoramaTileUrl,
 	},
