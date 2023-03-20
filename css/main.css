@@ -1,0 +1,98 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: #222831 !important;
+  color: #EEEEEE !important;
+}
+
+.bar {
+    float: left;
+    left: 40%;
+    width: 5px;
+    border-radius: 5px;
+    height: 50%;
+    background-color: #EEEEEE;
+    top: 100px;
+    position: absolute;
+}
+
+#title {
+  padding-left: 50px;
+  top: 40px;
+  position: relative;
+  width: 100%;
+}
+
+#chall-title {
+  margin-left: 10px;
+}
+
+#icon-select {
+    float: left;
+    left: 40%;
+    position: absolute;
+    margin-left: 40px;
+    height: 50%;
+    width: 40%;
+    top: 100px;
+}
+
+#icons {
+  position: relative;
+  float: left;
+  margin-top: 20px;
+  background-color: rgb(255, 255, 255, 0.7);
+  width: 400px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+#map-icon {
+  
+}
+
+#chall-select {
+  position: relative;
+  left: 40px;
+  margin-top: 60px;
+  width: 40%;
+  height: 80%;
+}
+
+#cards { 
+    position: relative;
+    float: left;
+    margin-top: 10px;
+    margin-right: 10%;
+}
+
+#chall-card {
+    border-width: 2px;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    background-color: darkgrey;
+    margin: 8px;
+    font-size: 30px;
+    color: #e4e4e4;
+}
+
+#buttons, #info{
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  font-family: Chalkduster, fantasy;
+}
+
+#next{
+  margin-left: 100px;
+}
+
+
+#center{
+  text-align: center;
+}
+
