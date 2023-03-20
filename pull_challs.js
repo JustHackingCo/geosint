@@ -13,7 +13,7 @@ console.log(coords);
 var script;
 var context = vm.createContext({console, setTimeout, fetch, fs, window: jsdom.window, document: jsdom.window.document});
 for (const [name, {pano, lat, lng}] of Object.entries(coords)) {
-    for (let z = 0; z < 5; z++) {
+    for (let z = 0; z < 6; z++) {
     	for (let x = 0; x < 2**z; x++) {
 	    for (let y = 0; y < 2**(z-1); y++) {
     	    	script = new vm.Script(`

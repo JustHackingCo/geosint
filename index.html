@@ -6,12 +6,22 @@
     <link rel="stylesheet" href="/css/main.css" type="text/css">
   </head>
   <body>
-      <ul>
-	<li><a href="/chall1">chall1</a></li>
-	<li><a href="/chall2">chall2</a></li>      
-	<li><a href="/chall3">chall3</a></li>
-      </ul>
- 
+	<h2 id="title">Welcome to Geosint!</h2>
+	<div id="chall-select">
+	    <h4 id="chall-title">Select a challenge:</h4>
+            <div id="cards">
+		<button id="chall-card" onclick="window.location = '/chall1'">chall1</button>
+		<button id="chall-card" onclick="window.location = '/chall2'">chall2</button>
+		<button id="chall-card" onclick="window.location = '/chall3'">chall3</button>
+            </div>
+	</div>
+	<div class="bar"></div>
+	<div id="icon-select">
+	    <h4 id="title-icons">Select your icon:</h4>
+	    <div id="icons">
+	    </div>
+        </div>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </body>
