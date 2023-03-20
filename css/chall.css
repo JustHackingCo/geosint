@@ -1,0 +1,137 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#outer {
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right-width: .5px;
+}
+
+#map, #pano{
+  border-style: solid;
+  border-width: 1px;
+}
+
+
+#map-box {
+  float: right;
+  height: 20%;
+  width: 50%;
+  transition: 0.3s;
+  border-radius: 10px;
+  right: 10px;
+  position: absolute;
+  bottom: 15px;
+}
+
+#map {
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right-width: .5px;
+  border-radius: 10px;
+}
+
+#submit {
+  position: absolute;
+  font-size: 15px;
+  bottom: 5px;
+  background-color: rgb(0,0,0,0.5);
+  color: white;
+  z-index: 3;
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  border-width: 0;
+}
+
+#map-box:hover {
+  height: 40%;
+  width: 100%;
+}
+
+#map-box:hover #map {
+  
+}
+
+#map-box:hover #submit {
+}
+
+#pano {
+  position: fixed;
+  float: left;
+  height: 100%;
+  width: 100%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left-width: 0px;
+  display: flex;
+}
+
+
+#result{
+  height: 25%;
+  width: 90%;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#location, #distance, #totaldistance{
+    font-size: 20px;
+    text-align: center;
+    font-family: Chalkduster, fantasy;
+}
+
+#location, #distance {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+#check, #next{
+  font-size: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  width: 200px;
+}
+
+#buttons, #info{
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  font-family: Chalkduster, fantasy;
+}
+
+#next{
+  margin-left: 100px;
+}
+
+
+#center{
+  text-align: center;
+}
+
+#totaldistance{
+  bottom: 0;
+  width: 100%;
+}
+
+#hud {
+  font-family: Chalkduster, fantasy;
+  font-size: 15px;
+  position: absolute;
+  z-index: 2;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+

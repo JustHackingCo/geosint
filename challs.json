@@ -1,0 +1,5 @@
+{
+	"chall1": {"pano": "N4ITP5i6MJ6AAow7lRHWYw", "lat": 52.2308738, "lng": 21.0043232, "flag": "flag{fake_flag_11111}"},
+	"chall2": {"pano": "lmHBuOq2mFWht3PeqYTIAQ", "lat": 41.8720525, "lng": -87.6374099, "flag": "flag{fake_flag_22222}"},
+	"chall3": {"pano": "Dh894aWLJDOheA3rn1mblw", "lat": -29.312687, "lng": 27.4901126, "flag": "flag{fake_flag_33333}"}
+}
