@@ -44,13 +44,13 @@ docker build -t geosint .
 
 Run the image
 ```sh
-docker run -p 8080:6958 geosint
+docker run -p 8080:6958 -d geosint
 ```
 
 
 ### Node Packages
 ```sh
-npm install body-parser cookie-parser express jsdom node-fetch
+npm install body-parser cookie-parser express jsdom node-fetch@2
 ```
 
 ### Shoutout
