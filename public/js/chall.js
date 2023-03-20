@@ -6,9 +6,18 @@ var map;
 var markers = [];
 var guess_coordinates = [];
 var check_count = 0;
-var default_pano_width = 32;
-var default_pano_height = 16;
+var pano_width = 32;
+var pano_height = 16;
 var comp_loc = {lat: 19.300819751590797, lng: -81.18481045869258}; // TODO - get comp location from backend
+
+var link = document.location.href.split("/");
+var challName;
+if (link[link.length - 1].length == 0) {
+    challName = link[link.length - 2];
+} else {
+    challName = link[link.length - 1];
+}
+console.log("challName: " + challName);
 
 function str2ab(str) {
   const buf = new ArrayBuffer(str.length);
@@ -21,8 +30,21 @@ function str2ab(str) {
 
 async function initialize() {
     check_count = 0;
-  
-    // TODO - GET /img/chall*/info.json
+
+    // GET info.json
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", '/info.json', false); // false for synchronous request
+    xhr.send( null );
+    console.log(xhr.status);
+    if (xhr.status == 200) {
+    	var infoJson = JSON.parse(xhr.responseText);
+    	if (infoJson.hasOwnProperty(challName)) {
+	    pano_width = infoJson[challName].width;
+	    pano_height = infoJson[challName].height;
+	    //console.log("width: " + infoJson[challName].width);
+	    //console.log("height: " + infoJson[challName].height);
+	}
+    }
 
     document.getElementById('hud').innerHTML = "<h2>Where it be?</h2>";
 
@@ -68,24 +90,14 @@ async function initialize() {
 
     // Street View
     var pano = document.getElementById('pano');
-    const link = document.location.href.split("/");
-    const chall = link[link.length - 2];
-    const panorama = new google.maps.StreetViewPanorama(pano, { pano: chall, test: 1, visible: true });
-    panorama.registerPanoProvider(getCustomPanorama, {cors: true});
-    
+    const panorama = new google.maps.StreetViewPanorama(pano, { pano: challName, visible: true });
+    panorama.registerPanoProvider(getCustomPanorama);
 }
 
 // Return a pano image given the panoID.
 function getCustomPanoramaTileUrl(pano, zoom, tileX, tileY) {
     const origin = document.location.origin;
-    const link = document.location.href.split("/");
-    var chall;
-    if (link[link.length - 1].length == 0) {
-  	chall = link[link.length - 2];
-    } else {
-	chall = link[link.length - 1];
-    }
-    return `${origin}/img/${chall}/tile_${tileX}_${tileY}_${zoom}.jpeg`;
+    return `${origin}/img/${challName}/tile_${tileX}_${tileY}_${zoom}.jpeg`;
 }
 
 // Construct the appropriate StreetViewPanoramaData given the passed pano IDs.
@@ -93,7 +105,7 @@ function getCustomPanorama(pano) {
     return {
 	tiles: {
 	    tileSize: new google.maps.Size(512, 512),
-	    worldSize: new google.maps.Size(512*default_pano_width, 512*default_pano_height),
+	    worldSize: new google.maps.Size(512*pano_width, 512*pano_height),
 	    centerHeading: 105,
 	    getTileUrl: getCustomPanoramaTileUrl,
 	},
