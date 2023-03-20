@@ -21,7 +21,7 @@ If you would like to change the locations, you can do so by changing the below f
 
 ### challs.json
 This private file stores the challenge secret information that is used by `server.js`, `pull_challs.js`, and `pull_challs_fast.js`.
-```json
+```
 {
         <chall_name>: {"pano": <panorama ID>, "lat": <latitude>, "lng": <longitude>, "maxZ": <max zoom [1-5]>, "flag": <flag for challenge>},
 	...
@@ -30,7 +30,7 @@ This private file stores the challenge secret information that is used by `serve
 
 ### public/info.json
 This file is optional, however it can be helpful in specifying panorama width and height for those panoramas that overlap and look weird. The start of the `initialize()` function in `public/js/chall.js` uses this file.
-```json
+```
 {
         <chall_name>: {"width": int, "height": int}
 }
