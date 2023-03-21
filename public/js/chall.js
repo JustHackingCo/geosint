@@ -10,6 +10,10 @@ var pano_width = 32;
 var pano_height = 16;
 var comp_loc = {lat: 19.300819751590797, lng: -81.18481045869258}; // TODO - get comp location from backend
 
+// list of icon names
+var iconNames = ['cat.ico', 'gamer.ico', 'hacker.ico', 'pizza.ico', 'taco.ico'];
+
+// Get challName
 var link = document.location.href.split("/");
 var challName;
 if (link[link.length - 1].length == 0) {
@@ -17,16 +21,8 @@ if (link[link.length - 1].length == 0) {
 } else {
     challName = link[link.length - 1];
 }
-console.log("challName: " + challName);
+//console.log("challName: " + challName);
 
-function str2ab(str) {
-  const buf = new ArrayBuffer(str.length);
-  const bufView = new Uint8Array(buf);
-  for (let i = 0, strLen = str.length; i < strLen; i++) {
-    bufView[i] = str.charCodeAt(i);
-  }
-  return buf;
-}
 
 async function initialize() {
     check_count = 0;
@@ -79,10 +75,21 @@ async function initialize() {
     function placeMarker(location) {
     	deleteMarkers();
         guess_coordinates = [];
+	
+	
+	var cookies = document.cookie.split('; ');
+	var icon = 'hacker.ico';
+	for (const cookie of cookies) {
+    	    var parts = cookie.split('=');
+    	    if (parts[0] == "icon" && iconNames.includes(parts[1])) {
+        	icon = parts[1];
+    	    }
+	}
+	
         var marker = new google.maps.Marker({
             position: location, 
             map: map,
-	    icon: "/img/icons/taco.ico", // TODO - get user's icon choice
+	    icon: `/img/icons/${icon}`, // get user's icon choice
         });
         markers.push(marker);
         guess_coordinates.push(marker.getPosition().lat(),marker.getPosition().lng());
