@@ -97,7 +97,13 @@ async function initialize() {
 
     // Street View
     var pano = document.getElementById('pano');
-    const panorama = new google.maps.StreetViewPanorama(pano, { pano: challName, visible: true });
+    var panoOptions = {
+	pano: challName,
+	visible: true,
+	panControlOptions: {position: google.maps.ControlPosition.LEFT_CENTER},
+	zoomControlOptions: {position: google.maps.ControlPosition.LEFT_CENTER}
+    };
+    const panorama = new google.maps.StreetViewPanorama(pano, panoOptions);
     panorama.registerPanoProvider(getCustomPanorama);
 }
 

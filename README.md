@@ -42,6 +42,8 @@ Build the NodeJs image
 docker build -t geosint .
 ```
 
+*NOTE:* The docker build automatically runs `pull_challs.js`
+
 Run the image
 ```sh
 docker run -p 443:6958 -d geosint
@@ -50,7 +52,7 @@ docker run -p 443:6958 -d geosint
 
 ### Node Packages
 ```sh
-npm install body-parser cookie-parser express jsdom node-fetch@2
+npm install body-parser cookie-parser express node-fetch@2
 ```
 
 ### Shoutout
