@@ -21,6 +21,7 @@ if (link[link.length - 1].length == 0) {
 } else {
     challName = link[link.length - 1];
 }
+
 //console.log("challName: " + challName);
 
 
@@ -41,8 +42,9 @@ async function initialize() {
 	    //console.log("height: " + infoJson[challName].height);
 	}
     }
-
-    document.getElementById('hud').innerHTML = "<h2>Where it be?</h2>";
+    
+    document.getElementById('chall-title').innerHTML = '<h2>' + challName + '</h2>';
+    document.getElementById('chall-result').innerHTML = "Where it be?";
 
     // Map and Map options
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -131,17 +133,12 @@ function setMapOnAll(map) {
     }
 }
 
-function clearMarkers() {
-    setMapOnAll(null);
-}
-
 function showMarkers() {
     setMapOnAll(map);
 }
 
 function deleteMarkers() {
     setMapOnAll(null); // clear markers
-    clearMarkers();
     markers = [];
 }
 
@@ -157,7 +154,7 @@ function submit() {
     
     var resp = xhr.responseText;
     console.log("response: " + resp);
-    document.getElementById("hud").innerHTML = "<h2>" + resp + "</h2>";
+    document.getElementById("chall-result").innerHTML = resp;
 }
 
 

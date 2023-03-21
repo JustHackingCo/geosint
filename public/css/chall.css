@@ -109,7 +109,6 @@ html, body {
 
 h1{
   text-align: center;
-  font-family: Chalkduster, fantasy;
 }
 
 #next{
@@ -127,11 +126,27 @@ h1{
 }
 
 #hud {
-  font-family: Chalkduster, fantasy;
   font-size: 15px;
   position: absolute;
   z-index: 2;
-  margin-left: 10px;
-  margin-top: 10px;
+  padding: 10px;
+  max-width: 500px;
+  height: 100px;
+  background-color: #222831;
+  border-radius: 10px;
+  top: 10px;
+  left: 10px;
+}
+
+#chall-result {
+    color: #EEEEEE;
+    margin: 0;
+    padding: 5px;
+}
+
+#chall-title {
+    color: #EEEEEE;
+    margin: 0;
+    padding: 5px;
 }
 
