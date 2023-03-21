@@ -11,7 +11,7 @@ var pano_height = 16;
 var comp_loc = {lat: 19.300819751590797, lng: -81.18481045869258}; // TODO - get comp location from backend
 
 // list of icon names
-var iconNames = ['cat.ico', 'gamer.ico', 'hacker.ico', 'pizza.ico', 'taco.ico'];
+var iconNames = ['cat.ico', 'gamer.ico', 'hacker.ico', 'pizza.ico', 'taco.ico', 'galaxy_brain.ico', 'frogchamp.ico', 'hamhands.ico', 'justin.ico'];
 
 // Get challName
 var link = document.location.href.split("/");
