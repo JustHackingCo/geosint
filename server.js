@@ -35,8 +35,6 @@ for (const [name, {pano, lat, lng, flag}] of Object.entries(coords)) {
 }
 
 
-app.listen(port, () => console.log('Example app is listening on port ' + port +'.'));
-
 // Honestly no idea if this is accurate or not :shrug:
 function distance(lat1, lon1, lat2, lon2, unit) {
     if ((lat1 == lat2) && (lon1 == lon2)) {
@@ -59,3 +57,14 @@ function distance(lat1, lon1, lat2, lon2, unit) {
     }
 }
 
+const options = {
+  key: fs.readFileSync("server.key"),
+  cert: fs.readFileSync("server.cert"),
+};
+
+https.createServer(options, app).listen(port, function (req, res) {
+  console.log(`Server started at port ${port}`);
+});
+
+// HTTP
+//app.listen(port, () => console.log('Example app is listening on port ' + port +'.'));

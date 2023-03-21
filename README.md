@@ -44,7 +44,7 @@ docker build -t geosint .
 
 Run the image
 ```sh
-docker run -p 8080:6958 -d geosint
+docker run -p 443:6958 -d geosint
 ```
 
 

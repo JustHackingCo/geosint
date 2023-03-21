@@ -2,3 +2,5 @@ node_modules/
 package.json
 package-lock.json
 public/img/chall*
+server.key
+server.cert
