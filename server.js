@@ -2,13 +2,16 @@ const fs = require("fs");
 const https = require("https");
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const port = 6958;
 app.use(express.static(__dirname + '/public/'));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 const coords = require('./challs.json');
+const secret = require('./secret.json');
 console.log(coords);
 
 app.get(`/`, function(req, res) {
@@ -17,7 +20,11 @@ app.get(`/`, function(req, res) {
 
 for (const [name, {pano, lat, lng, flag}] of Object.entries(coords)) {
     app.get(`/${name}`, function(req, res) {
-    	res.sendFile(__dirname+'/chall.html');
+	if (req.cookies.devToken === secret.devToken) {
+	    res.sendFile(__dirname+'/chall.html');
+	} else {
+	    res.sendFile(__dirname+'/403.html');
+	}
     });
 
     app.post(`/${name}/submit`, (req, res) => {
