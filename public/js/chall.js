@@ -106,7 +106,7 @@ async function initialize() {
 	zoomControlOptions: {position: google.maps.ControlPosition.LEFT_CENTER}
     };
     const panorama = new google.maps.StreetViewPanorama(pano, panoOptions);
-    panorama.registerPanoProvider(getCustomPanorama);
+    panorama.registerPanoProvider(getCustomPanorama, {cors: true});
 }
 
 // Return a pano image given the panoID.
