@@ -1,5 +1,5 @@
 {
-	"chall1": {"pano": "N4ITP5i6MJ6AAow7lRHWYw", "lat": 52.2308738, "lng": 21.0043232, "maxZ": 5, "flag": "flag{fake_flag_11111}"},
-	"chall2": {"pano": "lmHBuOq2mFWht3PeqYTIAQ", "lat": 41.8720525, "lng": -87.6374099, "maxZ": 5, "flag": "flag{fake_flag_22222}"},
-	"chall3": {"pano": "ezFE53g2evi1D2qd3-nBjw", "lat": 52.2335509, "lng": 21.0067221, "maxZ": 5, "flag": "flag{fake_flag_33333}"}
+	"chall1": {"panoType": 1, "pano": "N4ITP5i6MJ6AAow7lRHWYw", "lat": 52.2308738, "lng": 21.0043232, "maxZ": 5, "flag": "flag{fake_flag_11111}"},
+	"chall2": {"panoType": 1, "pano": "lmHBuOq2mFWht3PeqYTIAQ", "lat": 41.8720525, "lng": -87.6374099, "maxZ": 5, "flag": "flag{fake_flag_22222}"},
+	"chall3": {"panoType": 1, "pano": "ezFE53g2evi1D2qd3-nBjw", "lat": 52.2335509, "lng": 21.0067221, "maxZ": 5, "flag": "flag{fake_flag_33333}"}
 }
