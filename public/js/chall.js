@@ -26,6 +26,7 @@ if (link[link.length - 1].length == 0) {
 
 
 async function initialize() {
+    var panoInfo;
     check_count = 0;
 
     // GET info.json
@@ -36,8 +37,11 @@ async function initialize() {
     if (xhr.status == 200) {
     	var infoJson = JSON.parse(xhr.responseText);
     	if (infoJson.hasOwnProperty(challName)) {
-	    pano_width = infoJson[challName].width;
-	    pano_height = infoJson[challName].height;
+	    panoInfo = infoJson[challName];
+	    if (panoInfo.hasOwnProperty("width") && panoInfo.hasOwnProperty("height")) {
+	    	pano_width = infoJson[challName].width;
+	    	pano_height = infoJson[challName].height;
+	    }
 	    //console.log("width: " + infoJson[challName].width);
 	    //console.log("height: " + infoJson[challName].height);
 	}

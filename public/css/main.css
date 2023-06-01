@@ -3,6 +3,24 @@ html, body {
   width: 100%;
   background-color: #222831 !important;
   color: #EEEEEE !important;
+  font-family: Poppins !important;
+}
+
+#logo-title {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#header {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 150px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #111831;
 }
 
 .bar {
@@ -16,11 +34,15 @@ html, body {
     position: absolute;
 }
 
+#logo {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+}
+
 #title {
-  padding-left: 50px;
-  top: 40px;
-  position: relative;
-  width: 100%;
+  font-size: 3rem;
+  padding-left: 30px;
 }
 
 #chall-title {
@@ -39,32 +61,54 @@ html, body {
 
 #icons {
   position: relative;
-  float: left;
-  margin-top: 20px;
-  background-color: rgb(255, 255, 255, 0.7);
-  width: 400px;
-  height: 300px;
+  float: right;
   border-radius: 10px;
   padding: 10px;
+  max-width: 360px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 #icon {
-   padding: 5px;
-   margin: 5px;
-   border-style: outset;
-   border-color: darkgrey; 
+  padding: 5px;
+  margin: 5px;
+  border-style: outset;
+  border-color: darkgrey;
+  background-color: rgb(255, 255, 255, 0.7);
 }
 
 #icon:hover {
     cursor: pointer;
 }
 
+#main-body {
+
+}
+
+#instructions {
+  float: right;
+  margin-top: 40px;
+  margin-right: 40px;
+  padding: 20px;
+  border: 2px solid #111111;
+  background-color: rgb(255, 255, 255, 0.7);
+  color: black;
+  max-width: 600px;
+  min-width: 500px;
+  width: 30%;
+}
+
+#competitions {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
 #chall-select {
   position: relative;
-  left: 40px;
-  margin-top: 60px;
-  width: 40%;
-  height: 80%;
+  margin: 40px;
 }
 
 #cards { 
@@ -80,7 +124,12 @@ html, body {
     width: 200px;
     height: 200px;
     text-align: center;
-    background-color: darkgrey;
+    /*background-color: darkgrey;*/
+    background-color: rgb(1,1,1,0.6);
+    background-position-x: center;
+    background-position-y: center;
+    background-size: contain;
+    background-blend-mode: darken;
     margin: 8px;
     font-size: 30px;
     color: #e4e4e4;
@@ -92,7 +141,6 @@ html, body {
 
 h1{
   text-align: center;
-  font-family: Chalkduster, fantasy;
 }
 
 #next{
@@ -102,5 +150,21 @@ h1{
 
 #center{
   text-align: center;
+}
+
+@media only screen and (max-width: 1050px) {
+    #icons {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1370px) {
+    #instructions {
+        display: none;
+    }
+
+    #competitions {
+	width: 100%;
+    }
 }
 

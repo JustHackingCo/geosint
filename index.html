@@ -3,34 +3,64 @@
   <head>
     <meta charset="utf-8">
     <title>Geosint</title>
+    <link rel="icon" type="image/x-icon" href="/img/geosint-logo.ico">
     <link rel="stylesheet" href="/css/main.css" type="text/css">
   </head>
-  <body>
-	<h2 id="title">Welcome to Geosint!</h2>
-	<div id="chall-select">
-	    <h4 id="chall-title">Select a challenge:</h4>
-            <div id="cards">
-		<button id="chall-card" onclick="window.location = '/chall1'">chall1</button>
-		<button id="chall-card" onclick="window.location = '/chall2'">chall2</button>
-		<button id="chall-card" onclick="window.location = '/chall3'">chall3</button>
+  <body onload="setImages();">
+	<div id="header">
+	    <div id="logo-title">
+	    	<img id="logo" src="/img/geosint-logo.png">
+	    	<h1 id="title">Welcome to Geosint!</h2>
+	    </div>
+	    <div id="icons">
+                <img id="icon" src="/img/icons/taco.ico" onclick="setIcon(this)">
+                <img id="icon" src="/img/icons/pizza.ico" onclick="setIcon(this)">
+                <img id="icon" src="/img/icons/gamer.ico" onclick="setIcon(this)">
+                <img id="icon" src="/img/icons/hacker.ico" onclick="setIcon(this)">
+                <img id="icon" src="/img/icons/cat.ico" onclick="setIcon(this)">
+                <img id="icon" src="/img/icons/frogchamp.ico" onclick="setIcon(this)">
+                <img id="icon" src="/img/icons/galaxy_brain.ico" onclick="setIcon(this)">
+                <img id="icon" src="/img/icons/hamhands.ico" onclick="setIcon(this)">
+                <img id="icon" src="/img/icons/justin.ico" onclick="setIcon(this)">
+                <img id="icon" src="/img/icons/caleb.ico" onclick="setIcon(this)">
             </div>
 	</div>
-	<div class="bar"></div>
-	<div id="icon-select">
-	    <h4 id="title-icons">Select your icon:</h4>
-	    <div id="icons">
-		<img id="icon" src="/img/icons/taco.ico" onclick="setIcon(this)">
-		<img id="icon" src="/img/icons/pizza.ico" onclick="setIcon(this)">
-		<img id="icon" src="/img/icons/gamer.ico" onclick="setIcon(this)">
-		<img id="icon" src="/img/icons/hacker.ico" onclick="setIcon(this)">
-		<img id="icon" src="/img/icons/cat.ico" onclick="setIcon(this)">
-		<img id="icon" src="/img/icons/frogchamp.ico" onclick="setIcon(this)">
-		<img id="icon" src="/img/icons/galaxy_brain.ico" onclick="setIcon(this)">
-		<img id="icon" src="/img/icons/hamhands.ico" onclick="setIcon(this)">
-		<img id="icon" src="/img/icons/justin.ico" onclick="setIcon(this)">
-		<img id="icon" src="/img/icons/caleb.ico" onclick="setIcon(this)">
+	<div id="main-body">
+	    <div id="competitions">
+	    	<div id="chall-select">
+	    	    <h4 id="chall-title">UMDCTF2023 Challenges:</h4>
+            	    <div id="cards">
+		    	<button id="chall-card" onclick="window.location = '/chall1'">chall1</button>
+		    	<button id="chall-card" onclick="window.location = '/chall2'">chall2</button>
+		    	<button id="chall-card" onclick="window.location = '/chall3'">chall3</button>
+            	    </div>
+	    	</div>
+	      	<div id="chall-select">
+            	    <h4 id="chall-title">BSidesKY 2023 Challenges:</h4>
+            	    <div id="cards">
+                    	<button id="chall-card" onclick="window.location = '/chall4'">chall4</button>
+                    	<button id="chall-card" onclick="window.location = '/chall5'">chall5</button>
+                    	<button id="chall-card" onclick="window.location = '/chall6'">chall6</button>
+            	    </div>
+            	</div>
 	    </div>
-        </div>
+
+	    <div id="instructions">
+		<h2> Directions </h2>
+		<p>Hello and welcome to Geosint. This main page is where you can find challenges from 
+		various competitions. If you are here for a specific competition, make sure you choose
+		challenges from the appropriate category on the left. Newer competitions will show up
+		at the top of the list. I have left up challenges from previous competitions in case 
+		anyone wants to give them a crack :)</p><br/>
+		<p>If you are familiar with <a href="https://www.geoguessr.com/" target="_blank">GeoGuessr</a>,
+		then you probably already know how to play! If not, feel free to click on a challenge
+		to give it a try.</p><br/>
+		<p>To submit a guess, click somewhere on the mini-map and hit "Submit". You should 
+		receive a yes or no answer depending on if you were correct. "no" means you are 
+		incorrect and "yes + flag" means you got it right!</p><br/>
+		<p>Time to put your Geo OSINT skills to the test!</p>
+	    </div>
+	</div>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="/js/main.js" type="text/javascript"></script>
