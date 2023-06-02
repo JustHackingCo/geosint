@@ -35,18 +35,14 @@ async function initialize() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", '/info.json', false); // false for synchronous request
     xhr.send( null );
-    console.log(xhr.status);
     if (xhr.status == 200) {
     	var infoJson = JSON.parse(xhr.responseText);
-    	if (infoJson.hasOwnProperty(challName)) {
-	    panoInfo = infoJson[challName];
+    	if (infoJson.hasOwnProperty(compName) && infoJson[compName].hasOwnProperty(challName)) {
+	    panoInfo = infoJson[compName][challName];
 	    if (panoInfo.hasOwnProperty("width") && panoInfo.hasOwnProperty("height")) {
-	    	pano_width = infoJson[challName].width;
-	    	pano_height = infoJson[challName].height;
+	    	pano_width = panoInfo.width;
+	    	pano_height = panoInfo.height;
 	    }
-	    
-	    //console.log("width: " + infoJson[challName].width);
-	    //console.log("height: " + infoJson[challName].height);
 	}
     }
     
