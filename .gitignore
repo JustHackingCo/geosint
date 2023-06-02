@@ -2,6 +2,7 @@ node_modules/
 package.json
 package-lock.json
 public/img/chall*
+public/img/practice*
 server.key
 server.cert
 secret.json

@@ -6,44 +6,16 @@
     <link rel="icon" type="image/x-icon" href="/img/geosint-logo.ico">
     <link rel="stylesheet" href="/css/main.css" type="text/css">
   </head>
-  <body onload="setImages();">
+  <body onload="setCards();">
 	<div id="header">
 	    <div id="logo-title">
 	    	<img id="logo" src="/img/geosint-logo.png">
 	    	<h1 id="title">Welcome to Geosint!</h2>
 	    </div>
-	    <div id="icons">
-                <img id="icon" src="/img/icons/taco.ico" onclick="setIcon(this)">
-                <img id="icon" src="/img/icons/pizza.ico" onclick="setIcon(this)">
-                <img id="icon" src="/img/icons/gamer.ico" onclick="setIcon(this)">
-                <img id="icon" src="/img/icons/hacker.ico" onclick="setIcon(this)">
-                <img id="icon" src="/img/icons/cat.ico" onclick="setIcon(this)">
-                <img id="icon" src="/img/icons/frogchamp.ico" onclick="setIcon(this)">
-                <img id="icon" src="/img/icons/galaxy_brain.ico" onclick="setIcon(this)">
-                <img id="icon" src="/img/icons/hamhands.ico" onclick="setIcon(this)">
-                <img id="icon" src="/img/icons/justin.ico" onclick="setIcon(this)">
-                <img id="icon" src="/img/icons/caleb.ico" onclick="setIcon(this)">
-            </div>
+	    <div id="icons"></div>
 	</div>
 	<div id="main-body">
-	    <div id="competitions">
-	    	<div id="chall-select">
-	    	    <h4 id="chall-title">UMDCTF2023 Challenges:</h4>
-            	    <div id="cards">
-		    	<button id="chall-card" onclick="window.location = '/chall1'">chall1</button>
-		    	<button id="chall-card" onclick="window.location = '/chall2'">chall2</button>
-		    	<button id="chall-card" onclick="window.location = '/chall3'">chall3</button>
-            	    </div>
-	    	</div>
-	      	<div id="chall-select">
-            	    <h4 id="chall-title">BSidesKY 2023 Challenges:</h4>
-            	    <div id="cards">
-                    	<button id="chall-card" onclick="window.location = '/chall4'">chall4</button>
-                    	<button id="chall-card" onclick="window.location = '/chall5'">chall5</button>
-                    	<button id="chall-card" onclick="window.location = '/chall6'">chall6</button>
-            	    </div>
-            	</div>
-	    </div>
+	    <div id="competitions"></div>
 
 	    <div id="instructions">
 		<h2> Directions </h2>

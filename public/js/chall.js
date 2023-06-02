@@ -8,21 +8,23 @@ var guess_coordinates = [];
 var check_count = 0;
 var pano_width = 32;
 var pano_height = 16;
-var comp_loc = {lat: 19.300819751590797, lng: -81.18481045869258}; // TODO - get comp location from backend
+//var center_loc = {lat: 19.300819751590797, lng: -81.18481045869258}; 
+var center_loc = {lat: 0.00, lng: 0.00};
 
 // list of icon names
 var iconNames = ['cat.ico', 'gamer.ico', 'hacker.ico', 'pizza.ico', 'taco.ico', 'galaxy_brain.ico', 'frogchamp.ico', 'hamhands.ico', 'justin.ico', 'caleb.ico'];
 
 // Get challName
 var link = document.location.href.split("/");
-var challName;
+var challComp;
 if (link[link.length - 1].length == 0) {
-    challName = link[link.length - 2];
+    challComp = link[link.length - 2];
 } else {
-    challName = link[link.length - 1];
+    challComp = link[link.length - 1];
 }
-
-//console.log("challName: " + challName);
+var parts = challComp.split("-");
+var compName = parts[0];
+var challName = parts[1];
 
 
 async function initialize() {
@@ -42,6 +44,7 @@ async function initialize() {
 	    	pano_width = infoJson[challName].width;
 	    	pano_height = infoJson[challName].height;
 	    }
+	    
 	    //console.log("width: " + infoJson[challName].width);
 	    //console.log("height: " + infoJson[challName].height);
 	}
@@ -52,7 +55,7 @@ async function initialize() {
 
     // Map and Map options
     var map = new google.maps.Map(document.getElementById('map'), {
-      center: comp_loc,
+      center: center_loc,
       zoom: 1,
       streetViewControl: false,
       disableDefaultUI: true,
@@ -116,7 +119,7 @@ async function initialize() {
 // Return a pano image given the panoID.
 function getCustomPanoramaTileUrl(pano, zoom, tileX, tileY) {
     const origin = document.location.origin;
-    return `${origin}/img/${challName}/tile_${tileX}_${tileY}_${zoom}.jpeg`;
+    return `${origin}/img/${compName}/${challName}/tile_${tileX}_${tileY}_${zoom}.jpeg`;
 }
 
 // Construct the appropriate StreetViewPanoramaData given the passed pano IDs.
