@@ -18,14 +18,12 @@ function setIcon(obj) {
     // set user cookie to icon
     var parts = obj.src.split("/");
     var iconName = parts[parts.length - 1];
-    //console.log("iconName: " + iconName);
     document.cookie = `icon=${iconName}`;
 }
 
 function setIcons() {
     const iconsDiv = document.getElementById("icons");
     for (const iconName of iconNames) {
-	console.log(iconName);
         const icon = document.createElement("img");
 	icon.id = "icon";
 	icon.src = `/img/icons/${iconName}.ico`;
@@ -40,7 +38,6 @@ function setCards() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", '/info.json', false); // false for synchronous request
     xhr.send( null );
-    console.log(xhr.status);
     if (xhr.status != 200) {
 	return;
     }
@@ -52,8 +49,6 @@ function setCards() {
     // Make the competitions div structure
     for (const comp in infoJson) {
 	const challs = infoJson[comp];
-	console.log(comp);
-	console.log(challs);
 	const challSelectDiv = document.createElement("div");
 	challSelectDiv.id = "chall-select";
 	

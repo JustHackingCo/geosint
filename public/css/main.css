@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 html, body {
   height: 100%;
   width: 100%;
   background-color: #222831 !important;
   color: #EEEEEE !important;
-  font-family: Poppins !important;
 }
 
 #logo-title {
