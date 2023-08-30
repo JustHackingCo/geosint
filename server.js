@@ -22,15 +22,15 @@ for (const [comp, challs] of Object.entries(coords)) {
    	 });
 
     	app.post(`/${comp}-${name}/submit`, (req, res) => {
-	    console.log(req.body);
+	    //console.log(req.body);
 	    const [ guess_lat, guess_lng ] = req.body;
-	    console.log("lat: " + guess_lat + "\nlng: " + guess_lng);
+	    //console.log("lat: " + guess_lat + "\nlng: " + guess_lng);
 	    var dist = distance(guess_lat, guess_lng, lat, lng, 'K');
-	    console.log("dist: " + dist);
+	    //console.log("dist: " + dist);
 	    if (dist == 0.0) {
 	    	res.send("yes, " + flag);
 	    } else {
-	    	res.send("no");
+	    	res.send("not here");
 	    }
     	});
     }
@@ -59,6 +59,7 @@ function distance(lat1, lon1, lat2, lon2, unit) {
     }
 }
 
+// HTTPS
 const options = {
   key: fs.readFileSync("server.key"),
   cert: fs.readFileSync("server.cert"),

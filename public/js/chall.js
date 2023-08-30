@@ -8,7 +8,6 @@ var guess_coordinates = [];
 var check_count = 0;
 var pano_width = 32;
 var pano_height = 16;
-//var center_loc = {lat: 19.300819751590797, lng: -81.18481045869258}; 
 var center_loc = {lat: 0.00, lng: 0.00};
 
 // list of icon names
@@ -25,7 +24,7 @@ if (link[link.length - 1].length == 0) {
 var parts = challComp.split("-");
 var compName = parts[0];
 var challName = parts[1];
-
+var heading = 0;
 
 async function initialize() {
     var panoInfo;
@@ -43,11 +42,15 @@ async function initialize() {
 	    	pano_width = panoInfo.width;
 	    	pano_height = panoInfo.height;
 	    }
+	    if (panoInfo.hasOwnProperty("heading")) {
+		heading = panoInfo.heading;
+		console.log(`now have heading ${heading}`);
+	    }
 	}
     }
     
     document.getElementById('chall-title').innerHTML = '<h2>' + challName + '</h2>';
-    document.getElementById('chall-result').innerHTML = "Where it be?";
+    document.getElementById('chall-result').innerHTML = "Result: ";
 
     // Map and Map options
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -124,7 +127,7 @@ function getCustomPanorama(pano) {
 	tiles: {
 	    tileSize: new google.maps.Size(512, 512),
 	    worldSize: new google.maps.Size(512*pano_width, 512*pano_height),
-	    centerHeading: 105,
+	    centerHeading: heading,
 	    getTileUrl: getCustomPanoramaTileUrl,
 	},
     };

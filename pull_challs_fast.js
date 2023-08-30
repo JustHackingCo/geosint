@@ -6,6 +6,25 @@ const coords = require('./challs.json');
 console.log(coords);
 
 var url;
+
+async function saveStreetViewTile(x, y, z, comp, name, imgDir, resp) {
+    const contentType = resp.headers.get("content-type");
+    if (contentType && contentType.indexOf("application/json") !== -1 && contentType.indexOf("application/json") !== 0) {
+        console.log(`ERROR from ${comp}-${name} Tile (${x}, ${y}, ${z}) --- ${contentType.indexOf("application/json")}`);
+    } else {
+        resp.blob().then(blob => blob.arrayBuffer())
+                   .then(ab => {
+		       const fileName = `${imgDir}/tile_${x}_${y}_${z}.jpeg`;
+                       const fileStream = fs.createWriteStream(fileName);
+                       fileStream.write(new Uint8Array(ab));
+                       fileStream.end();
+                       console.log(`Received ${comp}-${name} Tile (${x}, ${y}, ${z}) ---> ${fileName}`);
+                   }).catch(error => {
+                       console.error('Error fetching Street View image:', error);
+                   });
+    }
+}
+
 async function pull(coords) {
     for (const [comp, challs] of Object.entries(coords)) {
 	compDir = `./public/img/${comp}`
@@ -25,8 +44,8 @@ async function pull(coords) {
                     	    url = `https://streetviewpixels-pa.googleapis.com/v1/tile?cb_client=maps_sv.tactile&panoid=${pano}&output=tile&x=${x}&y=${y}&zoom=${z}&nbt=1&fover=2`;
                     	}
 
-                    	fetch(url).then(resp => {
-                            const contentType = resp.headers.get("content-type");
+                    	await fetch(url).then(resp => saveStreetViewTile(x, y, z, comp, name, imgDir, resp));
+                        /*    const contentType = resp.headers.get("content-type");
                             if (contentType && contentType.indexOf("application/json") !== -1) {
                             	console.log(`ERROR from ${comp}-${name} Tile (${x}, ${y}, ${z})`);
                             } else {
@@ -40,7 +59,7 @@ async function pull(coords) {
                                     console.error('Error fetching Street View image:', error);
                             	});
                             }
-                    	});
+                    	}); */
         	    }
             	}
     	    }
