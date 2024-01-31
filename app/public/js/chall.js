@@ -2,40 +2,40 @@
 /* jshint node: true */
 'use strict';
 
-var map;
-var markers = [];
-var guess_coordinates = [];
-var check_count = 0;
-var pano_width = 32;
-var pano_height = 16;
-var center_loc = {lat: 0.00, lng: 0.00};
+let map;
+let markers = [];
+let guess_coordinates = [];
+let check_count = 0;
+let pano_width = 32;
+let pano_height = 16;
+let center_loc = {lat: 0.00, lng: 0.00};
 
 // list of icon names
-var iconNames = ['cat.ico', 'gamer.ico', 'hacker.ico', 'pizza.ico', 'taco.ico', 'galaxy_brain.ico', 'frogchamp.ico', 'hamhands.ico', 'justin.ico', 'caleb.ico'];
+let iconNames = ['cat.ico', 'gamer.ico', 'hacker.ico', 'pizza.ico', 'taco.ico', 'galaxy_brain.ico', 'frogchamp.ico', 'hamhands.ico', 'justin.ico', 'caleb.ico'];
 
 // Get challName
-var link = document.location.href.split("/");
-var challComp;
+let link = document.location.href.split("/");
+let challComp;
 if (link[link.length - 1].length == 0) {
     challComp = link[link.length - 2];
 } else {
     challComp = link[link.length - 1];
 }
-var parts = challComp.split("-");
-var compName = parts[0];
-var challName = parts[1];
-var heading = 0;
+let parts = challComp.split("-");
+let compName = parts[0];
+let challName = parts[1];
+let heading = 0;
 
 async function initialize() {
-    var panoInfo;
+    let panoInfo;
     check_count = 0;
 
     // GET info.json
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open("GET", '/info.json', false); // false for synchronous request
     xhr.send( null );
     if (xhr.status == 200) {
-    	var infoJson = JSON.parse(xhr.responseText);
+    	let infoJson = JSON.parse(xhr.responseText);
     	if (infoJson.hasOwnProperty(compName) && infoJson[compName].hasOwnProperty(challName)) {
 	    panoInfo = infoJson[compName][challName];
 	    if (panoInfo.hasOwnProperty("width") && panoInfo.hasOwnProperty("height")) {
@@ -53,7 +53,7 @@ async function initialize() {
     document.getElementById('chall-result').innerHTML = "Result: ";
 
     // Map and Map options
-    var map = new google.maps.Map(document.getElementById('map'), {
+    let map = new google.maps.Map(document.getElementById('map'), {
       center: center_loc,
       zoom: 1,
       streetViewControl: false,
@@ -62,8 +62,8 @@ async function initialize() {
     });
 
     // Add Map's Zoom Controls
-    var zoomControlDiv = document.createElement('div');
-    var zoomControl = new mapZoomControl(zoomControlDiv, map);
+    let zoomControlDiv = document.createElement('div');
+    let zoomControl = new mapZoomControl(zoomControlDiv, map);
     zoomControlDiv.index = 1;
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(zoomControlDiv);
 
@@ -72,7 +72,7 @@ async function initialize() {
 	placeMarker(event.latLng);
         if (check_count == 0){
           check_count += 1;
-	  var sb = document.getElementById("submit");
+	  let sb = document.getElementById("submit");
 	  sb.style.backgroundColor = "rgb(109, 185, 52)";
 	  sb.style.color = "black";
 	  sb.innerHTML = "Submit";
@@ -85,16 +85,16 @@ async function initialize() {
         guess_coordinates = [];
 	
 	
-	var cookies = document.cookie.split('; ');
-	var icon = 'hacker.ico';
+	let cookies = document.cookie.split('; ');
+	let icon = 'hacker.ico';
 	for (const cookie of cookies) {
-    	    var parts = cookie.split('=');
+    	    let parts = cookie.split('=');
     	    if (parts[0] == "icon" && iconNames.includes(parts[1])) {
         	icon = parts[1];
     	    }
 	}
 	
-        var marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
             position: location, 
             map: map,
 	    icon: `/img/icons/${icon}`, // get user's icon choice
@@ -104,8 +104,8 @@ async function initialize() {
     }
 
     // Street View
-    var pano = document.getElementById('pano');
-    var panoOptions = {
+    let pano = document.getElementById('pano');
+    let panoOptions = {
 	pano: challName,
 	visible: true,
 	panControlOptions: {position: google.maps.ControlPosition.LEFT_CENTER},
@@ -134,7 +134,7 @@ function getCustomPanorama(pano) {
 }
 
 function setMapOnAll(map) {
-    for (var i = 0; i < markers.length; i++) {
+    for (let i = 0; i < markers.length; i++) {
      	markers[i].setMap(map);
     }
 }
@@ -153,12 +153,12 @@ function submit() {
     const json = JSON.stringify(guess_coordinates);
     console.log(json);
 
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open("POST", document.location.href + "/submit", false); // false for synchronous request
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(json);
     
-    var resp = xhr.responseText;
+    let resp = xhr.responseText;
     console.log("response: " + resp);
     document.getElementById("chall-result").innerHTML = resp;
 }
@@ -171,7 +171,7 @@ function mapZoomControl(controlDiv, map) {
     controlDiv.style.padding = '5px';
 
     // Set CSS for the control wrapper
-    var controlWrapper = document.createElement('div');
+    let controlWrapper = document.createElement('div');
     controlWrapper.style.backgroundColor = 'transparent';
     controlWrapper.style.cursor = 'pointer';
     controlWrapper.style.textAlign = 'center';
@@ -182,7 +182,7 @@ function mapZoomControl(controlDiv, map) {
     controlDiv.appendChild(controlWrapper);
 
     // Set CSS for the zoomIn
-    var zoomInButton = document.createElement('div');
+    let zoomInButton = document.createElement('div');
     zoomInButton.style.width = '24px'; 
     zoomInButton.style.height = '24px';
     zoomInButton.style.borderRadius = '24px';
@@ -192,7 +192,7 @@ function mapZoomControl(controlDiv, map) {
     controlWrapper.appendChild(zoomInButton);
 
     // Set CSS for the zoomOut
-    var zoomOutButton = document.createElement('div');
+    let zoomOutButton = document.createElement('div');
     zoomOutButton.style.width = '24px'; 
     zoomOutButton.style.height = '24px';
     zoomOutButton.style.borderRadius = '24px';

@@ -1,0 +1,86 @@
+{
+    "type": "object",
+    "patternProperties": {
+        "^[a-zA-Z0-9_]+$": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z0-9_]+$": {
+                    "type": "object",
+                    "properties": {
+                        "panoType": {
+                            "type": "integer"
+                        },
+                        "pano": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "lat": {
+                            "type": "number"
+                        },
+                        "lng": {
+                            "type": "number"
+                        },
+                        "maxZ": {
+                            "type": "integer"
+                        },
+                        "flag": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "flag_file": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "img": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "panoType",
+                        "maxZ"
+                    ],
+                    "allOf": [
+                        {
+                            "anyOf": [
+                                {
+                                    "required": [
+                                        "lat",
+                                        "lng"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "pano"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "anyOf": [
+                                {
+                                    "required": [
+                                        "flag"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "flag_file"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

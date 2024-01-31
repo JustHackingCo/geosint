@@ -35,15 +35,15 @@ function setIcons() {
 // setCards() runs on body load
 function setCards() {
     // GET info.json
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open("GET", '/info.json', false); // false for synchronous request
     xhr.send( null );
     if (xhr.status != 200) {
 	return;
     }
 
-    var infoJson = JSON.parse(xhr.responseText);
-    var buttons = document.getElementsByTagName('button');
+    let infoJson = JSON.parse(xhr.responseText);
+    let buttons = document.getElementsByTagName('button');
     const compsDiv = document.getElementById("competitions");
 
     // Make the competitions div structure
@@ -71,7 +71,7 @@ function setCards() {
     	    };
 	    
 	    if (challInfo.hasOwnProperty("img")) {
-		var img = challInfo.img;
+		let {img} = challInfo;
 		button.style.backgroundImage = `url('../img/${comp}/${challName}/${img}')`;
 	    }
 

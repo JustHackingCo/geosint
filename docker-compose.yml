@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  geosint:
+    build: 
+      context: .
+      args:
+        - MAPS_API_KEY
+    command: ["pm2-runtime", "ecosystem.config.js"]
+    container_name: geosint
+    hostname: geosint
+    restart: always
+    volumes:
+    - "./challenges.yml:/usr/src/app/challenges.yml"
+    ports:
+      - "5000:6958"
+    secrets:
+      - flag_challenge_one
+secrets:
+  flag_challenge_one:
+    file: ./secrets/flag_challenge_one.txt
