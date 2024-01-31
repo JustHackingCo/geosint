@@ -1,0 +1,19 @@
+Basic:
+  WaterPlay:
+    panoType: 1
+    pano: null
+    lat: 33.8469103
+    lng: -112.2774139
+    maxZ: 5
+    flag: flag{fake_flag}
+    flag_file: flag_challenge_one
+    img: "tile_2_1_3.jpeg"
+  Downtown:
+    panoType: 1
+    pano: null
+    lat: 32.7094123
+    lng: -117.157065
+    maxZ: 5
+    flag: flag{fake_flag}
+    flag_file: flag_challenge_two
+    img: "tile_4_1_3.jpeg"

@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const coords = require('./challs.json');
 console.log(coords);
 
-var url;
+let url;
 
 async function saveStreetViewTile(x, y, z, comp, name, imgDir, resp) {
     const contentType = resp.headers.get("content-type");
@@ -28,11 +28,19 @@ async function saveStreetViewTile(x, y, z, comp, name, imgDir, resp) {
 async function pull(coords) {
     for (const [comp, challs] of Object.entries(coords)) {
 	compDir = `./public/img/${comp}`
-	fs.mkdir(compDir, { recursive: true }, (err) => {if (err) console.error(`Error creating directory: ${err}`);});
+	fs.mkdir(compDir, { recursive: true }, (err) => {
+        if (err) {
+            console.error(`Error creating directory: ${err}`);
+        }
+    });
     	for (const [name, {panoType, pano, lat, lng, maxZ}] of Object.entries(challs)) {
 	    // Make appropriate directories
             imgDir = `./public/img/${comp}/${name}`
-            fs.mkdir(imgDir, { recursive: true }, (err) => {if (err) console.error(`Error creating directory: ${err}`);});
+            fs.mkdir(imgDir, { recursive: true }, (err) => {
+                if (err) {
+                    console.error(`Error creating directory: ${err}`);
+                }
+            });
 
 	    // Pull Images
     	    for (let z = 0; z <= maxZ; z++) {
