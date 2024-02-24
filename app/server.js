@@ -10,10 +10,14 @@ app.use(express.static(__dirname + '/public/'));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
-const coords = require('./challs.json');
 const defaults = require('./defaults.json');
 const info_keys = ["img", "width", "height"];
+let challsLastModifiedTime = 0;
+let coords = JSON.parse(fs.readFileSync('./challs.json', 'utf8'));
+let info = parse_public_info(coords)
+
 console.log(coords);
+console.log(info);
 
 app.get(`/`, function(req, res) {
     res.sendFile(__dirname+'/index.html');
@@ -42,8 +46,33 @@ for (const [comp, challs] of Object.entries(coords)) {
 }
 
 app.get('/info.json', (req, res) => {
+    coords, info = get_challenge_info(coords);
+    console.log(info);
+    res.json(info)
+});
+
+function get_challenge_info(current_info) {
+    fs.stat('./challs.json', (err, stats) => {
+        if (err) {
+            return res.status(500).send("Error reading file stats");
+        }
+
+        const currentModifiedTime = new Date(stats.mtime).getTime();
+        if (currentModifiedTime > challsLastModifiedTime) {
+            let newData = JSON.parse(fs.readFileSync('./challs.json', 'utf8'));
+            console.log("Reading in new challenges.");
+            console.log(newData);
+            current_info = newData;
+            info = parse_public_info(current_info);
+            console.log(info);
+        }
+    });
+    return current_info, info
+}
+
+function parse_public_info(challenge_info) {
     const newData = {};
-    for (const [comp, challs] of Object.entries(coords)) {
+    for (const [comp, challs] of Object.entries(challenge_info)) {
         newData[comp] = {}; 
         for (const [name, properties] of Object.entries(challs)) {
             newData[comp][name] = {};
@@ -54,8 +83,8 @@ app.get('/info.json', (req, res) => {
         }
     }
 
-    res.json(newData);
-});
+    return newData
+}
 
 function get_flag(comp, name) {
     let file = coords[comp][name]['flag_file'];
